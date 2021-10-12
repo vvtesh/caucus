@@ -1,41 +1,58 @@
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="description" content="Use the HERE Indoor Maps API to load and visualize an indoor map">
     <title>Caucus - Crowd Density Layer</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+    <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-venues.js"></script>
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <script type="text/javascript" src='../test-credentials.js'></script>
+    <style type="text/css">
+      .log {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 250px;
+        width: 250px;
+        overflow: scroll;
+        background: white;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 12px;
+      }
+      .log-entry {
+        padding: 5px;
+        border-bottom: 1px solid #d0d9e9;
+      }
+      .log-entry:nth-child(odd) {
+          background-color: #e1e7f1;
+      }
+    </style>
+  </head>
+  <body>
 
-<table width="100%" height="5%" colspan="0" rowspan="0" cellpadding="0" cellspacing="0">
-    <tr align="center" valign="top" bgcolor="black">
-        <td>&nbsp;</td>
-    </tr>
-</table>
-
-
-<table width="100%" height="90%">
+  <table width="100%" height="100%">
     <tr align="center" valign="middle">
-        <td>
-            <table>
-                <tr><td align="center"><font size="6"><b>Caucus - Crowd Desity Layer</b></font></td></tr>
-                <tr><td>&nbsp;</td></tr>
-                <tr><td align="center"><input type=text value="Best time to travel to Central Park Zoo" size="50"></input>&nbsp;&nbsp;<input type="button" value="Search" /></td></tr>
-                <tr><td>&nbsp;</td></tr>
-                <tr><td><img height=500 src="caucus.gif" /></td></tr>
-            </table>
-        </td>
+      <td>
+        <table>
+          <tr><td align="center" valign="middle"><font size="6"><b>Caucus - Crowd Density Layer</b></font></td></tr>
+          <tr valign="middle" align="center"><td width="600px" height="600px">
+            <div id="map"></div>
+          </td></tr>
+        </table>
+      </td>
     </tr>
-</table>
+  </table>
 
-<table width="100%" height="5%" colspan="0" rowspan="0" cellpadding="0" cellspacing="0">
-    <tr align="center" valign="bottom" bgcolor="black">
-        <td>&nbsp;</td>
-    </tr>
-</table>
 
-<!--
-<video width="320" height="240" controls>
-    <source src="bestimeapp.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
--->
-</body>
+    <script type="text/javascript" src='demo.js'></script>
+  </body>
 </html>
