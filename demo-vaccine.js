@@ -7,6 +7,8 @@
 /**
  * Boilerplate map initialization code starts below:
  */
+
+
  function addCircleToMap(map, lat, lng, radius, color){
  var obj =
   new H.map.Circle(
@@ -25,23 +27,49 @@
   return obj;
 }
 
+function clearAllObjects() {
+	currObj.dispose(); 
+}
+
 function changeTime() {
+	     clearAllObjects();
+	     
 	     var radioButtons = document.getElementsByName("time");
              for(var i = 0; i < radioButtons.length; i++)
              {
                  if(radioButtons[i].checked == true)
                  {
-                     obj1.dispose();
-		 	if (radioButtons[i].value == 0) obj1 = addCircleToMap(map, lat1, lng1 , 5, 'rgba(200, 0, 0, 1)');
-		 	if (radioButtons[i].value == 1) obj1 = addCircleToMap(map, lat1, lng1 , 45, 'rgba(200, 0, 0, 0.45)');
-		 	if (radioButtons[i].value == 2) obj1 = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
-		 	if (radioButtons[i].value == 3) obj1 = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
-			map.addObject(obj1);
+		 	if (radioButtons[i].value == 0) currObj = addCircleToMap(map, lat1, lng1 , 5, 'rgba(200, 0, 0, 1)');
+		 	if (radioButtons[i].value == 1) currObj = addCircleToMap(map, lat1, lng1 , 45, 'rgba(200, 0, 0, 0.45)');
+		 	if (radioButtons[i].value == 2) currObj = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
+		 	if (radioButtons[i].value == 3) currObj = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
+			map.addObject(currObj);
                  }
              }
          
 }
 
+function playOnce(item) {
+	var radioButtons = document.getElementsByName("time");
+	radioButtons[item].checked = true;
+	changeTime();
+}
+
+function play() {
+	var time = 0;
+	for (var i=0; i<4; i++) {
+	time = time + 1000;
+	setTimeout(function(){ playOnce(0); }, time);
+	time = time + 1000;
+	setTimeout(function(){ playOnce(1); }, time);
+	time = time + 1000;
+	setTimeout(function(){ playOnce(2); }, time);
+	time = time + 1000;
+	setTimeout(function(){ playOnce(3); }, time);
+	}
+}
+
+var currObj;
 var lat1 = 51.580256;
 var lng1 = 0.111558;
 
@@ -70,9 +98,8 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // Step 4: create the default UI component, for displaying bubbles
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-var obj1 = addCircleToMap(map, lat1, lng1, 50, 'rgba(200, 0, 0, 0.6)');
-
-map.addObject(obj1);
+currObj = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
+map.addObject(currObj );
 
 //obj1.dispose(); 
 //check.
