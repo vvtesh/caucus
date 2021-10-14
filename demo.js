@@ -71,4 +71,5 @@ var obj1 = addCircleToMap(map, 18.9225423, 72.8341395, 50, 'rgba(200, 0, 0, 0.6)
 
 map.addObject(obj1);
 
-//obj1.dispose();
+//obj1.dispose(); 
+//check.
