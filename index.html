@@ -42,14 +42,64 @@
   <table width="100%" height="100%">
     <tr align="center" valign="middle">
       <td>
-        <table>
-          <tr><td align="center" valign="middle"><font size="6"><b>Caucus - Crowd Density Layer</b></font></td></tr>
-          <tr valign="middle" align="center"><td width="600px" height="600px">
-            <div id="map"></div>
-          </td></tr>
+        <table bgcolor="white">
+          <tr bgcolor="black"><td align="center" valign="middle" colspan="3"><font size="6" color="white"><b>Caucus - Crowd Density Layer</b></font></td></tr>
+          <tr><td colspan="3">&nbsp;</td></tr>
+          <tr valign="top" align="center" border="1" bgcolor="">
+            <td>
+              <table>
+                <tr valign="top">
+                  <td align="center" valign="top"><b>Request</b><br><br></td>
+                </tr>
+                <tr height="100%" valign="middle" align="center">
+                  <td height="100%">
+                    query <input type="text" value="gateway of india" readonly/><br><br><input type="button" value="submit" disabled />
+                  </td>
+                </tr>
+              </table>
+            </td>
+
+            <td width="600px"><div id="map"></div><input type="radio" name="time" value="0" onClick="changeTime()">00:00Hrs</input>&nbsp;<input type="radio" name="time" value="1" onClick="changeTime()">06:00Hrs</input>&nbsp;<input type="radio" name="time" value="2"  onClick="changeTime()">12:00Hrs</input>&nbsp;<input type="radio" name="time" value="3" checked onClick="changeTime()">18:00Hrs</input></td>
+
+            <td align="left"><div align="center"><b>Response (JSON)</b></div>
+              <font color="brown">
+              <pre>
+              {
+                title: "Gateway of India",
+                id: here:pds:place:356te7g9-beae598315764ff0807d02dfbce44b5a,
+                resultType: "place",
+                address: {
+                  label: "Gateway of India,
+                          Apollo Bunder, Colaba,
+                          Mumbai 400001, India",
+                  countryCode: "IND",
+                  countryName: "India",
+                  stateCode: "MH",
+                  state: "Maharashtra",
+                  county: "Mumbai",
+                  city: "Mumbai",
+                  district: "Colaba",
+                  subdistrict: "Apollo Bunder",
+                  postalCode: "400001"
+                },
+                density: {
+                  0000: 0.05
+                  0600: 0.10
+                  1200: 0.25
+                  1800: 0.60
+                }
+              }
+              </pre>
+              </font>
+            </td>
+          </tr>
+          <tr><td colspan="3">&nbsp;</td></tr>
+          <tr bgcolor="black"><td align="right" valign="middle" colspan="3"><font size="2" color="white">Copyright 2001 @ HERE.</font></td></tr>
+
         </table>
       </td>
     </tr>
+
   </table>
 
 
