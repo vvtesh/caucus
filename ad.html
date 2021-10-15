@@ -45,12 +45,15 @@
         <table bgcolor="white">
           <tr bgcolor="black"><td align="center" valign="middle" colspan="3"><font size="6" color="white"><b>Caucus - Crowd Density Layer</b></font></td></tr>
           <tr><td colspan="3">&nbsp;</td></tr>
+
           <tr><td colspan="3" bgcolor="white" align="center">
             <a href="index.html"><img src="tourism.png" /></a>&nbsp;&nbsp;
             <a href="vaccine.html"><img src="vaccination.png"></a>&nbsp;
             <a href="ad.html"><img src="ad.png" /></a>&nbsp;
             <a href="busstop.html"><img src="busstop.png" /></a>
-          </td></tr>          <tr><td colspan="3">&nbsp;</td></tr>
+          </td></tr>
+
+          <tr><td colspan="3">&nbsp;</td></tr>
           <tr valign="top" align="center" border="1" bgcolor="">
             <td>
               <table>
@@ -59,7 +62,7 @@
                 </tr>
                 <tr height="100%" valign="middle" align="center">
                   <td height="100%">
-                    query <input type="text" value="Vaccination centers in Ilford" readonly/><br><br><input type="button" value="submit" disabled />
+                    query <input type="text" value="where to show my ad?" readonly/><br><br><input type="button" value="submit" disabled />
                   </td>
                 </tr>
               </table>
@@ -75,51 +78,51 @@
               <font color="brown">
               <pre>
               {
-                 title: "King George Hospital",
-                 id: here:pds:place:826u10j6-b39c6307390bd92834640e7a7e4ac835,
-                 resultType: "place",
-                 address: {
-                    label: "King George Hospital, Ilford, IG3 8, United Kingdom",
-                    countryCode: "GBR",
-                    countryName: "United Kingdom",
-                    state: "England",
-                    countyCode: "ESS",
-                    county: "Essex",
-                    city: "Ilford",
-                    district: "Ilford",
-                    postalCode: "IG3 8"
+                title: "Express Avenue Mall",
+                id: here:pds:place:356tf346-d521286aefc2d6e6dd76612fceef5bd3,
+                resultType: "place",
+                address: {
+                  label: "Express Avenue Mall, Anna Salai Area, Chennai 600002, India",
+                  countryCode: "IND",
+                  countryName: "India",
+                  stateCode: "TN",
+                  state: "Tamil Nadu",
+                  county: "Chennai",
+                  city: "Chennai",
+                  district: "Anna Salai Area",
+                  postalCode: "600002"
                 },
                 density: {
-                  0000: 0.05
-                  0600: 0.45
+                  0000: 0.25
+                  0600: 0.10
                   1200: 0.25
-                  1800: 0.25
+                  1800: 0.60
                 }
               }
 
               {
-               title: "Brookside, Ilford, IG6 2, United Kingdom",
-               id: here:af:streetsection:f5a1I4890xh9gjPASq.nvD,
-               resultType: "street",
-               address: {
-                  label: "Brookside, Ilford, IG6 2, United Kingdom",
-                  countryCode: "GBR",
-                  countryName: "United Kingdom",
-                  state: "England",
-                  countyCode: "ESS",
-                  county: "Essex",
-                  city: "Ilford",
-                  district: "Ilford",
-                  street: "Brookside",
-                  postalCode: "IG6 2"
+                title: "Spencer Plaza",
+                id: here:pds:place:356tf346-bc7fd24129d941faaa94db3dd4110dfa,
+                resultType: "place",
+                address: {
+                  label: "Spencer Plaza, Anna Salai, Anna Salai Area, Chennai 600002, India",
+                  countryCode: "IND",
+                  countryName: "India",
+                  stateCode: "TN",
+                  state: "Tamil Nadu",
+                  county: "Chennai",
+                  city: "Chennai",
+                  district: "Anna Salai Area",
+                  street: "Anna Salai",
+                  postalCode: "600002"
                 },
-                density: {
+                 density: {
                   0000: 0.05
-                  0600: 0.15
-                  1200: 0.25
-                  1800: 0.55
+                  0600: 0.25
+                  1200: 0.05
+                  1800: 0.65
                 }
-               }
+              }
               </pre>
               </font>
             </td>
@@ -134,7 +137,7 @@
   </table>
 
 
-    <script type="text/javascript" src='demo-vaccine.js'></script>
+    <script type="text/javascript" src='ad.js'></script>
   </body>
 </html>
 <!--ver 1.0 -->&nbsp;
