@@ -60,7 +60,7 @@
                 </tr>
                 <tr height="100%" valign="middle" align="center">
                   <td height="100%">
-                    query <input type="text" value="gateway of india" readonly/><br><br><input type="button" value="submit" disabled />
+                    query <input type="text" value="gateway of india" name="free_text_text_box"  /><br><br><input type="button" value="submit" onClick="startFreeTextSearch()"/>
                   </td>
                 </tr>
               </table>
@@ -72,36 +72,28 @@
               <input type="button" value="Play" onClick="play()">
             </td>
 
-            <td align="left"><div align="center"><b>Response (JSON)</b></div>
+            <td align="left"><div align="center">
+              <b>Response (JSON)</b></div>
+              <div id="responsejson">
               <font color="brown">
               <pre>
               {
-                title: "Gateway of India",
-                id: here:pds:place:356te7g9-beae598315764ff0807d02dfbce44b5a,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                resultType: "place",
+                title: Gateway of India
+                id: here:pds:place:356te7g9-beae598315764ff0807d02dfbce44b5a
+                resultType: place
                 address: {
-                  label: "Gateway of India,
-                          Apollo Bunder, Colaba,
-                          Mumbai 400001, India",
-                  countryCode: "IND",
-                  countryName: "India",
-                  stateCode: "MH",
-                  state: "Maharashtra",
-                  county: "Mumbai",
-                  city: "Mumbai",
-                  district: "Colaba",
-                  subdistrict: "Apollo Bunder",
-                  postalCode: "400001"
+                  label: Gateway of India, Apollo Bunder, Colaba, Mumbai 400001, India
                 },
                 density: {
-                  0000: 0.05
-                  0600: 0.10
-                  1200: 0.25
-                  1800: 0.60
+                      0000: 0.05
+                      0000: 0.10
+                      0000: 0.25
+                      0000: 0.60
                 }
               }
               </pre>
               </font>
+              </div>
             </td>
           </tr>
           <tr><td colspan="3">&nbsp;</td></tr>
@@ -114,7 +106,7 @@
   </table>
 
 
-    <script type="text/javascript" src='demo.js'></script>
+    <script type="text/javascript" src='demo-tourism.js'></script>
   </body>
 </html>
 <!--ver 1.0 -->&nbsp;

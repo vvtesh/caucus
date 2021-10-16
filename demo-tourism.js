@@ -7,6 +7,92 @@
 /**
  * Boilerplate map initialization code starts below:
  */
+function startFreeTextSearch() {
+    var q = document.getElementsByName("free_text_text_box")[0].value;
+    geocode(platform, q);
+}
+
+function geocode(platform, q) {
+  var geocoder = platform.getSearchService(),
+      geocodingParameters = {
+        q: q
+      };
+
+  geocoder.geocode(
+    geocodingParameters,
+    onSuccess,
+    onError
+  );
+}
+
+function onSuccess(result) {
+  var locations = result.items;
+ /*
+  * The styling of the geocoding response on the map is entirely under the developer's control.
+  * A representitive styling can be found the full JS + HTML code of this example
+  * in the functions below:
+  */
+  if (locations.length > 0)
+    addLocationsToMap(locations);
+
+}
+
+function addLocationsToMap(locations){
+  clearAllObjects();
+  map.dispose();
+  
+    lat1 = locations[0].position.lat;
+    lng1 = locations[0].position.lng;
+
+    map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
+      zoom: z,
+      center: { lat: lat1, lng: lng1 },
+      pixelRatio: window.devicePixelRatio || 1
+    });
+
+    // add a resize listener to make sure that the map occupies the whole container
+    window.addEventListener('resize', () => map.getViewPort().resize());
+
+    // Step 3: make the map interactive
+    // MapEvents enables the event system
+    // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+    var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+    // Step 4: create the default UI component, for displaying bubbles
+    var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+    currObj = addCircleToMap(map, lat1, lng1, 50, 'rgba(200, 0, 0, 0.6)');
+
+    map.addObject(currObj);
+
+    var address = "<font color=brown><pre>";
+    address = address + "              {" + "\n";
+    address = address + "                title: " + locations[0].title + "\n";
+    address = address + "                id: " + locations[0].id + "\n";
+    address = address + "                resultType: " + locations[0].resultType + "\n";
+    address = address + "                address: {" + "\n";
+    address = address + "                  label: " + locations[0].address.label + "\n";
+    address = address + "                }" + "\n";
+    address = address + "                density: {" + "\n";
+    address = address + "                      0000: 0.05" + "\n";
+    address = address + "                      0000: 0.10" + "\n";
+    address = address + "                      0000: 0.25" + "\n";
+    address = address + "                      0000: 0.60" + "\n";
+    address = address + "                }" + "\n";
+    address = address + "              }" + "\n";
+    address = address + "</pre></font>";
+    document.getElementById('responsejson').innerHTML = address;
+}
+
+/**
+ * This function will be called if a communication error occurs during the JSON-P request
+ * @param  {Object} error  The error message received.
+ */
+function onError(error) {
+  alert('Can\'t reach the remote server');
+}
+
+
 function clearAllObjects() {
 	currObj.dispose(); 
 }
@@ -52,6 +138,7 @@ function play() {
 var currObj;
 var lat1 = 18.9225423;
 var lng1 = 72.8341395;
+var z = 16;
  function addCircleToMap(map, lat, lng, radius, color){
  var obj =
   new H.map.Circle(
@@ -96,7 +183,7 @@ var defaultLayers = platform.createDefaultLayers();
 
 // Step 2: initialize a map
 var map = new H.Map(document.getElementById('map'), defaultLayers.vector.normal.map, {
-  zoom: 16,
+  zoom: z,
   center: { lat: lat1, lng: lng1 },
   pixelRatio: window.devicePixelRatio || 1
 });
