@@ -8,24 +8,31 @@
  * Boilerplate map initialization code starts below:
  */
 function clearAllObjects() {
-	currObj.dispose(); 
+	    currObj1.dispose();
+    	currObj2.dispose();
 }
 
 function changeTime() {
 	     clearAllObjects();
-	     
-	     var radioButtons = document.getElementsByName("time");
-             for(var i = 0; i < radioButtons.length; i++)
-             {
-                 if(radioButtons[i].checked == true)
-                 {
-		 	if (radioButtons[i].value == 0) currObj = addCircleToMap(map, lat1, lng1 , 5, 'rgba(200, 0, 0, 1)');
-		 	if (radioButtons[i].value == 1) currObj = addCircleToMap(map, lat1, lng1 , 45, 'rgba(200, 0, 0, 0.45)');
-		 	if (radioButtons[i].value == 2) currObj = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
-		 	if (radioButtons[i].value == 3) currObj = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
-			map.addObject(currObj);
-                 }
-             }
+
+         var radioButtons = document.getElementsByName("time");
+          for(var i = 0; i < radioButtons.length; i++)
+          {
+              if(radioButtons[i].checked == true)
+              {
+                 if (radioButtons[i].value == 0) currObj1 = addCircleToMap(map, lat1, lng1 , 5, 'rgba(200, 0, 0, 1)');
+                 if (radioButtons[i].value == 1) currObj1 = addCircleToMap(map, lat1, lng1 , 45, 'rgba(200, 0, 0, 0.45)');
+                 if (radioButtons[i].value == 2) currObj1 = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
+                 if (radioButtons[i].value == 3) currObj1 = addCircleToMap(map, lat1, lng1 , 25, 'rgba(200, 0, 0, 0.25)');
+                 map.addObject(currObj1);
+
+                 if (radioButtons[i].value == 0) currObj2 = addCircleToMap(map, lat2, lng2 , 5, 'rgba(200, 0, 0, 1)');
+                 if (radioButtons[i].value == 1) currObj2 = addCircleToMap(map, lat2, lng2 , 45, 'rgba(200, 0, 0, 0.45)');
+                 if (radioButtons[i].value == 2) currObj2 = addCircleToMap(map, lat2, lng2 , 25, 'rgba(200, 0, 0, 0.25)');
+                 if (radioButtons[i].value == 3) currObj2 = addCircleToMap(map, lat2, lng2 , 25, 'rgba(200, 0, 0, 0.25)');
+                 map.addObject(currObj2);
+              }
+          }
          
 }
 
@@ -49,34 +56,54 @@ function play() {
 	}
 }
 
-var currObj;
+var currObj1;
+var currObj2;
+
 var lat1 = 13.05888;
 var lng1 = 80.26414;
 
-var lat2 = 13.06115;
-var lng2 = 80.26179;
+var lat2 = 13.0614698; //13.06115;
+var lng2 = 80.2613303; //80.26179;
 
- function addCircleToMap(map, lat, lng, radius, color){
+function addCircleToMap(map, lat, lng, radius, color){
 
- var marker = new H.map.Marker({lat:lat, lng:lng});
- return marker;
-
+ //var marker = new H.map.Marker({lat:lat, lng:lng});
+ //return marker;
+ var obj =
+    new H.map.Circle(
+      // The central point of the circle
+      {lat: lat, lng: lng},
+      // The radius of the circle in meters
+      radius,
+      {
+        style: {
+          strokeColor: color, // Color of the perimeter
+          lineWidth: 2,
+          fillColor: color  // Color of the circle
+        }
+      }
+    );
+    return obj;
 }
 
 function changeTime() {
 	     var radioButtons = document.getElementsByName("time");
-             for(var i = 0; i < radioButtons.length; i++)
-             {
-                 if(radioButtons[i].checked == true)
-                 {
-                        currObj.dispose();
-		 	if (radioButtons[i].value % 2 == 0) currObj = addCircleToMap(map, lat1, lng1, 10, 'rgba(200, 0, 0, 0.1)');
-		 	if (radioButtons[i].value % 2 == 1) currObj = addCircleToMap(map, lat2, lng2, 20, 'rgba(200, 0, 0, 0.2)');
-
-			map.addObject(currObj);
-                 }
-             }
-         
+          for(var i = 0; i < radioButtons.length; i++)
+          {
+              if(radioButtons[i].checked == true)
+              {
+                     clearAllObjects();
+                     if (radioButtons[i].value % 2 == 0) {
+                         currObj1 = addCircleToMap(map, lat1, lng1, 40, 'rgba(200, 0, 0, 0.6)');
+                         currObj2 = addCircleToMap(map, lat2, lng2, 10, 'rgba(200, 0, 0, 0.6)');
+                     } else {
+                         currObj1 = addCircleToMap(map, lat1, lng1, 10, 'rgba(200, 0, 0, 0.6)');
+                         currObj2 = addCircleToMap(map, lat2, lng2, 40, 'rgba(200, 0, 0, 0.6)');
+                     }
+                     map.addObject(currObj1);
+                     map.addObject(currObj2);
+              }
+          }
 }
 
 // Step 1: initialize communication with the platform
@@ -104,9 +131,11 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 // Step 4: create the default UI component, for displaying bubbles
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
-currObj = addCircleToMap(map, lat1, lng1, 50, 'rgba(200, 0, 0, 0.6)');
+currObj1 = addCircleToMap(map, lat1, lng1, 10, 'rgba(200, 0, 0, 0.6)');
+currObj2 = addCircleToMap(map, lat2, lng2, 40, 'rgba(200, 0, 0, 0.6)');
 
-map.addObject(currObj);
+map.addObject(currObj1);
+map.addObject(currObj2);
 
 //obj1.dispose(); 
 //check.
